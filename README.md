@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Priyank-Malviya
 - 👀 I’m interested in Software and Game development
 - 🌱 I’m currently learning Unity, Azure
-- 💞️ I’m looking to collaborate on ...
+- 💞️ I’m looking to collaborate on Azure Project and Gaming Projects
 - 📫 How to reach me ...
 
 <!---
