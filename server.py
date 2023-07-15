@@ -44,7 +44,7 @@ def handle_connection(client):
             if nickname and addr:
                 del nicknames[nickname]
                 del clients[addr]
-        
+
             stop = True
 
 
@@ -73,7 +73,6 @@ def main():
         else:
             res = "0"
             client.send(f"{res}".encode('utf-8'))
-            client.close()
 
 
 if __name__ == '__main__':
