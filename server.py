@@ -1,5 +1,6 @@
 import socket
 import threading
+import json
 
 HOST = socket.gethostbyname(socket.gethostname())
 PORT = 7292
@@ -15,6 +16,9 @@ nicknames = {}
 def broadcast(message):
         for client in nicknames.values():
                 client.send(message)
+
+def send_message(client, message):
+    client.send(message)
 
 def handle_connection(client):
         stop = False
@@ -49,7 +53,10 @@ def main():
                         
                         print(f"NickName is {nickname}")
                         client.send(f"{res}".encode('utf-8'))
-                        broadcast(f"{nickname} joined the chat!".encode('utf-8'))
+                        
+
+                        nicknames_json = json.dumps(nicknames)
+                        send_message(client, nicknames_json.encode('utf-8'))
 
                         thread = threading.Thread(target=handle_connection, args=(client,))
                         thread.start()
