@@ -50,8 +50,10 @@ def main():
         print('server is running...')
 
         while True:
-                
-                client, addr = server.accept()
+                try:
+                        client, addr = server.accept()
+                except:
+                        print("already connected!!")
                 print(f"Connected to {addr}")
                 
                 nickname = client.recv(1024).decode('utf-8')
