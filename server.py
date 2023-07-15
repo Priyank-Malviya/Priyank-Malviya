@@ -69,6 +69,7 @@ def main():
                         thread.start()
                 else:
                         client.send("0".encode('utf-8'))
+                        client.close()
 
 if __name__ == '__main__':
         main() 
