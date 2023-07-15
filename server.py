@@ -29,12 +29,18 @@ def handle_connection(client):
                         broadcast(message)
                 except:
                         nickname = None
-                        for key, value in nicknames.items():
+                        addr = None
+                        for key, value in clients.items():
                                 if value == client:
+                                        addr = key
+                                        break
+                        for key, value in nicknames.items():
+                                if value == addr:
                                         nickname = key
                                         break
-                        if nickname:
+                        if nickname and addr:
                                 del nicknames[nickname]
+                                del clients[addr]
                         
                                 broadcast(f"{nickname} left the chat!".encode('utf-8'))
                                 stop = True
@@ -55,6 +61,8 @@ def main():
                         print(f"NickName is {nickname}")
                         client.send(f"{res}".encode('utf-8'))
                         
+                        nicknames_json = json.dumps(nicknames)
+                        send_message(client, nicknames_json.encode('utf-8'))
 
                         thread = threading.Thread(target=handle_connection, args=(client,))
                         thread.start()
