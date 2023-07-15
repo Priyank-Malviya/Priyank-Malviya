@@ -19,6 +19,7 @@ def broadcast(message):
                 client.send(message)
 
 def send_message(client, message):
+    print(message)
     client.send(message)
 
 def handle_connection(client):
