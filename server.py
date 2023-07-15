@@ -44,20 +44,17 @@ def handle_connection(client):
             if nickname and addr:
                 del nicknames[nickname]
                 del clients[addr]
-
-                broadcast(f"{nickname} left the chat!".encode('utf-8'))
-                stop = True
+        
+            stop = True
 
 
 def main():
     print('Server is running...')
 
     while True:
-        try:
-            client, addr = server.accept()
-        except:
-            print("Already connected!!")
-            continue
+
+        client, addr = server.accept()
+
         print(f"Connected to {addr}")
 
         nickname = client.recv(1024).decode('utf-8')
