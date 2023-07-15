@@ -69,7 +69,10 @@ def main():
                         thread.start()
                 else:
                         client.send("0".encode('utf-8'))
-                        client.close()
+                        try:
+                                client.close()
+                        except:
+                                print("connection closed")
 
 if __name__ == '__main__':
         main() 
